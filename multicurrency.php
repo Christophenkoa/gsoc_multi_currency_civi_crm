@@ -5,14 +5,25 @@ require_once 'multicurrency.civix.php';
 use CRM_Multicurrency_ExtensionUtil as E;
 // phpcs:enable
 
-/* function multicurrency_civicrm_buildForm($formName, &$form) {
+function multicurrency_civicrm_buildForm($formName, &$form) {
   if($formName == 'CRM_Contact_Form_Contact') {
+    $form->add('text', 'testfield', ts('Test field'));
     if($form->getAction() == CRM_Core_Action::ADD) {
       $defaults['contact_source'] = 'CiviCon London 2015';
       $form->setDefaults($defaults); 
     }
   }
+} 
+
+
+/* function multicurrency_civicrm_buildForm($formName, &$form) {
+  if (($formName == 'CRM_Member_Form_MembershipType')) {
+    // Add the field element in the form
+    // $form->add('text', 'testfield', ts('Test field'));
+  }
 } */
+
+
 
 /**
  * Implements hook_civicrm_config().

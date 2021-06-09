@@ -1,7 +1,3 @@
-<!-- {literal}
 
-     Test too
-
-{/literal} -->
 
     
