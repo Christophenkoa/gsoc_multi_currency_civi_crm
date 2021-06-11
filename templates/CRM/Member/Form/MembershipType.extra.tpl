@@ -1,9 +1,9 @@
 {literal}
 <script type="text/javascript">
     CRM.$(function($) {
-        $('.crm-membershiptype-form-block-minimum_fee').after('<td class="label"><label for="currencies">Currency</label></td><td class="six crm-form-text"><select name="currencies" id="currency"><option value="volvo">FCFA</option><option value="saab">Euro</option><option value="mercedes">Dollar</option><option value="audi">CAD</option></select></td><br><td class="label"><label>Minimum Fee</label></td><td><input type="text" class="six crm-form-text" id="minimum_amount" name="minimum_amount" value="0"></td>');
+        // $('.crm-membershiptype-form-block-minimum_fee').after('<td class="label"><label for="currencies">Currency</label></td><td class="six crm-form-text"><select name="currencies" id="currency"><option value="volvo">FCFA</option><option value="saab">Euro</option><option value="mercedes">Dollar</option><option value="audi">CAD</option></select></td><br><td class="label"><label>Minimum Fee</label></td><td><input type="text" class="six crm-form-text" id="minimum_amount" name="minimum_amount" value="0"></td>');
+        $(".crm-membershiptype-form-block-minimum_fee").after('<div class="crm-accordion-wrapper collapsed"><div class="crm-accordion-header">Accepted Currencies For Membership Payment </div><div class="crm-accordion-body"><div class="crm-block crm-form-block crm-form-title-here-form-block">   <td class="label"><label for="currencies">Currency</label></td><td class="six crm-form-text"><select name="currencies" id="currency"><option value="volvo">FCFA</option><option value="saab">Euro</option><option value="mercedes">Dollar</option><option value="audi">CAD</option></select></td><br><td class="label"><label>Minimum Fee</label></td><td><input type="text" class="six crm-form-text" id="minimum_amount" name="minimum_amount" value="0"></td>   </div></div></div>');
     });
-    // cj(".crm-membershiptype-form-block-minimum_fee").append('<div class="crm-accordion-wrapper collapsed"><div class="crm-accordion-header">Accordion Title here</div><div class="crm-accordion-body"><div class="crm-block crm-form-block crm-form-title-here-form-block">Accordion Body here</div></div></div>');
 /*
     <table>
   <tr class="crm-entity" id="contact-123">
@@ -47,6 +47,7 @@
     </td>
 </tr>
 */
+
 </script>
 
 
@@ -65,5 +66,4 @@
     <span class="description">Minimum fee required for this membership type. For free/complimentary memberships - set minimum fee to zero (0). NOTE: When using CiviCRM to process sales taxes this should be the tax exclusive amount.</span>      </td>
         </tr>*}
 -->
-
 {/literal} 
