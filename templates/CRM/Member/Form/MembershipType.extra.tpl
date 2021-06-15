@@ -1,8 +1,38 @@
 {literal}
 <script type="text/javascript">
     CRM.$(function($) {
-        // $('.crm-membershiptype-form-block-minimum_fee').after('<td class="label"><label for="currencies">Currency</label></td><td class="six crm-form-text"><select name="currencies" id="currency"><option value="volvo">FCFA</option><option value="saab">Euro</option><option value="mercedes">Dollar</option><option value="audi">CAD</option></select></td><br><td class="label"><label>Minimum Fee</label></td><td><input type="text" class="six crm-form-text" id="minimum_amount" name="minimum_amount" value="0"></td>');
-        $(".crm-membershiptype-form-block-minimum_fee").after('<div class="crm-accordion-wrapper collapsed"><div class="crm-accordion-header">Accepted Currencies For Membership Payment </div><div class="crm-accordion-body"><div class="crm-block crm-form-block crm-form-title-here-form-block">   <td class="label"><label for="currencies">Currency</label></td><td class="six crm-form-text"><select name="currencies" id="currency"><option value="volvo">FCFA</option><option value="saab">Euro</option><option value="mercedes">Dollar</option><option value="audi">CAD</option></select></td><br><td class="label"><label>Minimum Fee</label></td><td><input type="text" class="six crm-form-text" id="minimum_amount" name="minimum_amount" value="0"></td>   </div></div></div>');
+        $('.crm-membershiptype-form-block-minimum_fee').after(
+            '<tr>\
+                <td class="label">\
+                    <label for="currencies">Minimum Fee</label>\
+                </td>\
+                <td class="six crm-form-text">\
+                    <select name="currencies" id="currency">\
+                        <option value="FCFA">FCFA</option>\
+                        <option value="EURO">EURO</option>\
+                        <option value="DOLLAR">DOLLAR</option>\
+                        <option value="CAD">CAD</option>\
+                    </select>\
+                    <input type="text" class="six crm-form-text" id="minimum_amount" name="minimum_amount" value="0"><br>\
+                    <a href="#" class="button"><span><i class="crm-i fa-plus-circle" aria-hidden="true">Another Currency</i></span></a>\
+                </td>\
+            </tr>'
+    );
+
+    /* $(."crm-membershiptype-form-block-description").after(
+            '<div id="addMoreCurrencies" class="#">\
+                <a href="#" class="button">\
+                    <span>\
+                        <i class="crm-i fa-plus-circle" aria-hidden="true"></i>\
+                        Another Currency\
+                    </span>\
+                </a>\ 
+            </div>'
+        ); */
+
+   
+
+        // $(".crm-membershiptype-form-block-minimum_fee").after('<div class="crm-accordion-wrapper collapsed"><div class="crm-accordion-header">Accepted Currencies For Membership Payment </div><div class="crm-accordion-body"><div class="crm-block crm-form-block crm-form-title-here-form-block">   <td class="label"><label for="currencies">Currency</label></td><td class="six crm-form-text"><select name="currencies" id="currency"><option value="volvo">FCFA</option><option value="saab">Euro</option><option value="mercedes">Dollar</option><option value="audi">CAD</option></select></td><br><td class="label"><label>Minimum Fee</label></td><td><input type="text" class="six crm-form-text" id="minimum_amount" name="minimum_amount" value="0"></td>   </div></div></div>');
     });
 /*
     <table>
