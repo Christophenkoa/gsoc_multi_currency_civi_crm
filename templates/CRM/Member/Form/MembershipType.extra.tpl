@@ -37,6 +37,10 @@
                 </tr>'
             ).hide('.crm-membershiptype-form-block-minimum_fee');
 
+        $('#addMoreCurrencies').click(function () {
+            alert('Add currency');
+        });
+
         /* $(."crm-membershiptype-form-block-description").after(
             '<div id="addMoreCurrencies" class="#">\
                 <a href="#" class="button">\
