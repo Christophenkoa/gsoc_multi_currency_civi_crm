@@ -5,7 +5,7 @@ require_once 'multicurrency.civix.php';
 use CRM_Multicurrency_ExtensionUtil as E;
 // phpcs:enable
 
-function multicurrency_civicrm_buildForm($formName, &$form) {
+/* function multicurrency_civicrm_buildForm($formName, &$form) {
   if($formName == 'CRM_Contact_Form_Contact') {
     $form->add('text', 'testfield', ts('Test field'));
     if($form->getAction() == CRM_Core_Action::ADD) {
@@ -13,15 +13,15 @@ function multicurrency_civicrm_buildForm($formName, &$form) {
       $form->setDefaults($defaults); 
     }
   }
-} 
+}*/
 
 
-/* function multicurrency_civicrm_buildForm($formName, &$form) {
+/*function multicurrency_civicrm_buildForm($formName, &$form) {
   if (($formName == 'CRM_Member_Form_MembershipType')) {
     // Add the field element in the form
-    // $form->add('text', 'testfield', ts('Test field'));
+  $form->add('text', 'testfield', ts('Test field'));
   }
-} */
+}*/
 
 
 
