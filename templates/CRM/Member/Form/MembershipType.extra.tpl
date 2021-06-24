@@ -13,13 +13,13 @@
                             <label for="currencies">Minimum Fee</label>\
                         </td>\
                         <td class="six crm-form-text">\
-                            <select name="currencies" id="currency" class="select2-container big crm-select2 crm-form-select required">\
+                            <select name="currencies" id="currency_name_1" class="select2-container big crm-select2 crm-form-select required">\
                                 <option value="FCFA">FCFA</option>\
                                 <option value="EURO">EURO</option>\
                                 <option value="DOLLAR">DOLLAR</option>\
                                 <option value="CAD">CAD</option>\
                             </select>\
-                            <input type="text" class="six crm-form-text" id="minimum_amount" name="minimum_amount" value="0"><br>\
+                            <input type="text" class="six crm-form-text" id="minimum_amount_1" name="minimum_amount" value="0"><br>\
                         </td>\
                     </tr>\
                     <tr>\
@@ -47,11 +47,40 @@
             /*
                 When clicking on add more currency button,
                 we duplicate minimum fees input field, minimum amount input field
+
+                Also we increment the value of each select tag and minimum amount text field
+                id to differentiate each other when we duplicate our content
              */
 
             $(".addMoreCurrencies").on('click', function() {
+
+                // Selecting last id
+                var currency_name_id = $('.currency_block select').last().attr('id');
+
+                console.log(currency_name_id);
+
+                var split_id = currency_name_id.split('_');
+
+                // New index
+                var index = Number(split_id[2]) + 1;
+
+                console.log(index);
+
+                // Create clone
+                var newel = $('.currency_block:last').clone(true);
+
+                // Set id of new element
+                $(newel).find('select').attr("id","currency_name_"+index);
+                $(newel).find('input[type=text]').attr("id","minimum_amount_"+index);
+
+                // Insert element
+                $(newel).insertAfter(".currency_block:last");
+
+                console.log(index);
+
+
                 //alert('Add currency');
-                $('.currency_block:last').clone().insertAfter('.currency_block:last');
+                // $('.currency_block:last').clone().insertAfter('.currency_block:last');
             });
         });
 
