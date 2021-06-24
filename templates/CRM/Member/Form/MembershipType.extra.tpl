@@ -19,7 +19,7 @@
                                 <option value="DOLLAR">DOLLAR</option>\
                                 <option value="CAD">CAD</option>\
                             </select>\
-                            <input type="text" class="six crm-form-text" id="minimum_amount_1" name="minimum_amount" value="0"><br>\
+                            <input type="text" class="six crm-form-text" id="minimum_amount_1" name="minimum_amount_1" value="0"><br>\
                         </td>\
                     </tr>\
                     <tr>\
@@ -48,8 +48,8 @@
                 When clicking on add more currency button,
                 we duplicate minimum fees input field, minimum amount input field
 
-                Also we increment the value of each select tag and minimum amount text field
-                id to differentiate each other when we duplicate our content
+                Also we increment the value of each select tag id and minimum amount text field
+                id and name to differentiate each other when we duplicate our content
              */
 
             $(".addMoreCurrencies").on('click', function() {
@@ -72,6 +72,7 @@
                 // Set id of new element
                 $(newel).find('select').attr("id","currency_name_"+index);
                 $(newel).find('input[type=text]').attr("id","minimum_amount_"+index);
+                $(newel).find('input[type=text]').attr("name","minimum_amount_"+index);
 
                 // Insert element
                 $(newel).insertAfter(".currency_block:last");
