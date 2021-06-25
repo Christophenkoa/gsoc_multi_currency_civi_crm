@@ -66,7 +66,7 @@
 
                 console.log(index);
 
-                // Create clone
+                // Create clone of currency_block div
                 var newel = $('.currency_block:last').clone(true);
 
                 // Set id of new element
@@ -74,7 +74,7 @@
                 $(newel).find('input[type=text]').attr("id","minimum_amount_"+index);
                 $(newel).find('input[type=text]').attr("name","minimum_amount_"+index);
 
-                // Insert element
+                // Insert that div after the previous one
                 $(newel).insertAfter(".currency_block:last");
 
                 console.log(index);
