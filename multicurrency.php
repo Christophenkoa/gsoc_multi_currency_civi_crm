@@ -15,6 +15,38 @@ use CRM_Multicurrency_ExtensionUtil as E;
   }
 }*/
 
+function multicurrency_civicrm_buildAmount($pageType, &$form, &$amount) {
+
+    if (!empty($form->get('mid'))) {
+        // Don't apply change to renewals
+        return;
+    }
+
+    $priceSetId = $form->get('priceSetId');
+
+    if (!empty($priceSetId)) {
+        $feeBlock = &$amount;
+        if (!is_array($feeBlock) || empty($feeBlock)) {
+            return;
+        }
+        if ($pageType == 'membership') {
+
+            foreach ($feeBlock as &$fee) {
+                if (!is_array($fee['options'])) {
+                    continue;
+                }
+                foreach ($fee['options'] as &$option) {
+                    // We only have one amount for each membership, so this code may be overkill,
+                    // as it checks every option displayed (and there is only one).
+                    echo $option['label'].'<br>';
+                    echo $option['amount'].'<br>';
+                }
+            }
+            $form->_priceSet['fields'] = $feeBlock;
+        }
+    }
+}
+
 
 /*function multicurrency_civicrm_buildForm($formName, &$form) {
   if (($formName == 'CRM_Member_Form_MembershipType')) {
