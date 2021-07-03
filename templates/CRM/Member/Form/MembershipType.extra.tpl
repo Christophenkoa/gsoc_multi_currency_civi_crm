@@ -50,6 +50,9 @@
 
                 Also we increment the value of each select tag id and minimum amount text field
                 id and name to differentiate each other when we duplicate our content
+
+                In few words, we duplicate our content. And for each duplicated content,
+                we change the ids value and name.
              */
 
             $(".addMoreCurrencies").on('click', function() {
@@ -61,7 +64,7 @@
 
                 var split_id = currency_name_id.split('_');
 
-                // New index
+                // Select the number at the end of name attribute and increment it.
                 var index = Number(split_id[2]) + 1;
 
                 console.log(index);
@@ -78,10 +81,6 @@
                 $(newel).insertAfter(".currency_block:last");
 
                 console.log(index);
-
-
-                //alert('Add currency');
-                // $('.currency_block:last').clone().insertAfter('.currency_block:last');
             });
         });
 
