@@ -15,6 +15,18 @@ use CRM_Multicurrency_ExtensionUtil as E;
   }
 }*/
 
+function multicurrency_civicrm_membershipTypeValues($form, &$membershipTypeValues) {
+    $membershipTypeValues[1]['name'] = 'General (50% discount)';
+    $membershipTypeValues[1]['minimum_fee'] = '50.00';
+
+    $membershipTypeValues[2]['name'] = 'Student (50% discount)';
+    $membershipTypeValues[2]['minimum_fee'] = '25.00';
+    /*echo '<pre>';
+        var_dump($membershipTypeValues);
+    echo '</pre>';*/
+}
+
+
 function multicurrency_civicrm_buildAmount($pageType, &$form, &$amount) {
 
     if (!empty($form->get('mid'))) {
@@ -36,6 +48,11 @@ function multicurrency_civicrm_buildAmount($pageType, &$form, &$amount) {
                     continue;
                 }
                 foreach ($fee['options'] as &$option) {
+
+                    // test
+                    echo '<pre>';
+                    var_dump($option['amount'] = 2000);
+                    echo '</pre>';
                     // We only have one amount for each membership, so this code may be overkill,
                     // as it checks every option displayed (and there is only one).
                     echo $option['label'].'<br>';
@@ -46,15 +63,6 @@ function multicurrency_civicrm_buildAmount($pageType, &$form, &$amount) {
         }
     }
 }
-
-
-/*function multicurrency_civicrm_buildForm($formName, &$form) {
-  if (($formName == 'CRM_Member_Form_MembershipType')) {
-    // Add the field element in the form
-  $form->add('text', 'testfield', ts('Test field'));
-  }
-}*/
-
 
 
 /**
