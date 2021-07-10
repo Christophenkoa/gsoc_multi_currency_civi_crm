@@ -5,59 +5,80 @@ require_once 'multicurrency.civix.php';
 use CRM_Multicurrency_ExtensionUtil as E;
 // phpcs:enable
 
-/* function multicurrency_civicrm_buildForm($formName, &$form) {
-  if($formName == 'CRM_Contact_Form_Contact') {
+
+// Modify public membership payment page template
+ function multicurrency_civicrm_buildForm($formName, &$form) {
+  if($formName == 'CRM_Contribute_Form_Contribution_Main') {
+
     $form->add('text', 'testfield', ts('Test field'));
-    if($form->getAction() == CRM_Core_Action::ADD) {
-      $defaults['contact_source'] = 'CiviCon London 2015';
-      $form->setDefaults($defaults); 
-    }
+
   }
-}*/
-
-function multicurrency_civicrm_membershipTypeValues($form, &$membershipTypeValues) {
-    $membershipTypeValues[1]['name'] = 'General (50% discount)';
-    $membershipTypeValues[1]['minimum_fee'] = '50.00';
-
-    $membershipTypeValues[2]['name'] = 'Student (50% discount)';
-    $membershipTypeValues[2]['minimum_fee'] = '25.00';
-    /*echo '<pre>';
-        var_dump($membershipTypeValues);
-    echo '</pre>';*/
 }
 
 
 function multicurrency_civicrm_buildAmount($pageType, &$form, &$amount) {
 
-    if (!empty($form->get('mid'))) {
-        // Don't apply change to renewals
-        return;
-    }
 
     $priceSetId = $form->get('priceSetId');
+
+    // sample membership data for test
+    $memberships =
+        [
+              [
+                  "label" => "FullTime",
+                  "due" =>
+                      [
+                          ["dollar", 500],
+                          ["Euro", 350],
+                          ["FCFA", 400],
+                      ],
+              ],
+
+               [
+                   "label" => "Contractor",
+                   "due" =>
+                       [
+                           ["dollar", 567],
+                           ["Euro", 543],
+                           ["FCFA", 800],
+                       ],
+               ],
+
+        ];
 
     if (!empty($priceSetId)) {
         $feeBlock = &$amount;
         if (!is_array($feeBlock) || empty($feeBlock)) {
             return;
         }
+
+
         if ($pageType == 'membership') {
+
+
+            // test purpose
+            /*echo '<ul>';
+
+            foreach ($memberships as $membership) {
+
+                echo '<li>'.$membership["label"].'</li>';
+
+                echo '<ul>';
+                    foreach ($membership["due"] as $key => $item) {
+                        echo '<div><input type="radio" id="huey" name="drone" value="huey" checked>';
+                        echo '<label for="huey">'.$item[0].' - '.$item[1]. '</label></div>';
+                    }
+                echo '</ul>';
+
+
+            }
+            echo '</ul>';*/
 
             foreach ($feeBlock as &$fee) {
                 if (!is_array($fee['options'])) {
                     continue;
                 }
-                foreach ($fee['options'] as &$option) {
 
-                    // test
-                    echo '<pre>';
-                    var_dump($option['amount'] = 2000);
-                    echo '</pre>';
-                    // We only have one amount for each membership, so this code may be overkill,
-                    // as it checks every option displayed (and there is only one).
-                    echo $option['label'].'<br>';
-                    echo $option['amount'].'<br>';
-                }
             }
             $form->_priceSet['fields'] = $feeBlock;
         }
