@@ -9,9 +9,7 @@ use CRM_Multicurrency_ExtensionUtil as E;
 // Modify public membership payment page template
  function multicurrency_civicrm_buildForm($formName, &$form) {
   if($formName == 'CRM_Contribute_Form_Contribution_Main') {
-
     $form->add('text', 'testfield', ts('Test field'));
-
   }
 }
 
@@ -19,11 +17,11 @@ use CRM_Multicurrency_ExtensionUtil as E;
 function multicurrency_civicrm_buildAmount($pageType, &$form, &$amount) {
 
 
-    $priceSetId = $form->get('priceSetId');
+    /*$priceSetId = $form->get('priceSetId');*/
 
     // sample membership data for test
-    $memberships =
-        [
+    /* $memberships =
+       [
               [
                   "label" => "FullTime",
                   "due" =>
@@ -54,26 +52,6 @@ function multicurrency_civicrm_buildAmount($pageType, &$form, &$amount) {
 
 
         if ($pageType == 'membership') {
-
-
-            // test purpose
-            /*echo '<ul>';
-
-            foreach ($memberships as $membership) {
-
-                echo '<li>'.$membership["label"].'</li>';
-
-                echo '<ul>';
-                    foreach ($membership["due"] as $key => $item) {
-                        echo '<div><input type="radio" id="huey" name="drone" value="huey" checked>';
-                        echo '<label for="huey">'.$item[0].' - '.$item[1]. '</label></div>';
-                    }
-                echo '</ul>';
-
-
-            }
-            echo '</ul>';*/
-
             foreach ($feeBlock as &$fee) {
                 if (!is_array($fee['options'])) {
                     continue;
@@ -82,7 +60,7 @@ function multicurrency_civicrm_buildAmount($pageType, &$form, &$amount) {
             }
             $form->_priceSet['fields'] = $feeBlock;
         }
-    }
+    }*/
 }
 
 
