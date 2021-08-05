@@ -24,51 +24,60 @@ function multicurrency_civicrm_buildForm($formName, &$form) {
 
 function multicurrency_civicrm_buildAmount($pageType, &$form, &$amount) {
 
-
+    //var_dump($pageType);
     /*$priceSetId = $form->get('priceSetId');*/
 
-    // sample membership data for test
-    /* $memberships =
-       [
-              [
-                  "label" => "FullTime",
-                  "due" =>
-                      [
-                          ["dollar", 500],
-                          ["Euro", 350],
-                          ["FCFA", 400],
-                      ],
-              ],
+    if($pageType == "membership") {
 
-               [
-                   "label" => "Contractor",
-                   "due" =>
-                       [
-                           ["dollar", 567],
-                           ["Euro", 543],
-                           ["FCFA", 800],
-                       ],
-               ],
+        // sample membership data for test
+        $memberships =
+            [
+                [
+                    "id" => 1,
+                    "label" => "Full Time",
+                    "due" =>
+                        [
+                            (object) array(
+                                "id" => 1,
+                                "currency" => "dollar",
+                                "amount" => 567 ),
+                            (object) array(
+                                "id" => 2,
+                                "currency" => "Euro",
+                                "amount" => 543 ),
+                            (object) array(
+                                "id" => 3,
+                                "currency" => "FCFA",
+                                "amount" => 800 ),
+                        ],
+                ],
 
-        ];
+                [
+                    "id" => 2,
+                    "label" => "Contractor",
+                    "due" =>
+                        [
+                            (object) array(
+                                "id" => 1,
+                                "currency" => "dollar",
+                                "amount" => 567 ),
+                            (object) array(
+                                "id" => 2,
+                                "currency" => "Euro",
+                                "amount" => 543 ),
+                            (object) array(
+                                "id" => 1,
+                                "currency" => "FCFA",
+                                "amount" => 800 ),
+                        ],
+                ],
 
-    if (!empty($priceSetId)) {
-        $feeBlock = &$amount;
-        if (!is_array($feeBlock) || empty($feeBlock)) {
-            return;
-        }
+            ];
+        // var_dump($memberships[0]['due'][0]->currency);
 
+        $form->assign('memberships', $memberships);
+    }
 
-        if ($pageType == 'membership') {
-            foreach ($feeBlock as &$fee) {
-                if (!is_array($fee['options'])) {
-                    continue;
-                }
-
-            }
-            $form->_priceSet['fields'] = $feeBlock;
-        }
-    }*/
 }
 
 

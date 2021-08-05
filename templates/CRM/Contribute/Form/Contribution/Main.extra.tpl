@@ -1,18 +1,18 @@
 <div class="membership_types">
 {*    insert a for loop here*}
-    <div>
-        <div style="margin:10px;">Contractor</div>
-        <ul>
-            <div>
-                <input type="radio" id="huey" name="drone" value="huey">
-                <label for="huey">dollar - 567</label>
-            </div>
-            <div>
-                <input type="radio" id="huey" name="drone" value="huey">
-                <label for="huey">euro - 543</label>
-            </div>
-        </ul>
-    </div>
+    {foreach from=$memberships item=membership}
+        <div>
+            <div style="margin:10px;">{$membership.label}</div>
+            <ul>
+                {foreach from=$membership item=membership_due}
+                    <div>
+                        <input type="radio" id="{$membership_due.id}" name="drone" value="{$membership_due.id}">
+                        <label for="huey">{$membership_due.currency} - {$membership_due.amount}</label>
+                    </div>
+                {/foreach}
+            </ul>
+        </div>
+    {/foreach}
 </div>
 
 {literal}
