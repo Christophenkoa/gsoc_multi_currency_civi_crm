@@ -11,6 +11,9 @@ The extension is licensed under [AGPL-3.0](LICENSE.txt).
 * PHP v7.2+
 * CiviCRM (*FIXME: Version number*)
 
+## Description
+New extension which allows user to pay membership fees through their local currency.
+
 ## Specifications
 * Allow to add membership type minimum fees for each currency (Load via API)
 used by a given organization and save in the db.
