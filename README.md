@@ -11,6 +11,13 @@ The extension is licensed under [AGPL-3.0](LICENSE.txt).
 * PHP v7.2+
 * CiviCRM (*FIXME: Version number*)
 
+## Specifications
+* Allow to add membership type minimum fees for each currency (Load via API)
+used by a given organization and save in the db.
+* On the contribution Page allow user to pay membership due using one of the 
+organization currency.
+* Allow payment processor to deal with each currency.
+
 ## Installation (Web UI)
 
 Learn more about installing CiviCRM extensions in the [CiviCRM Sysadmin Guide](https://docs.civicrm.org/sysadmin/en/latest/customize/extensions/).
@@ -42,13 +49,3 @@ cv en multicurrency
 ## Known Issues
 
 (* FIXME *)
-
-## Requirements
-........
-........
-........
-
-## Specifications
-........
-........
-........

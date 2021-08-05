@@ -6,11 +6,23 @@ use CRM_Multicurrency_ExtensionUtil as E;
 // phpcs:enable
 
 
-// Modify public membership payment page template
- function multicurrency_civicrm_buildForm($formName, &$form) {
-  if($formName == 'CRM_Contribute_Form_Contribution_Main') {
-    $form->add('text', 'testfield', ts('Test field'));
-  }
+function multicurrency_civicrm_buildForm($formName, &$form) {
+
+    if($formName == 'CRM_Member_Form_MembershipType') {
+        $allCurrencies = [];
+        $optionValues = \Civi\Api4\OptionValue::get()
+            ->addWhere('option_group_id', '=', 49)
+            ->setLimit(25)
+            ->execute();
+
+        foreach ($optionValues as $optionValue) {
+            array_push($allCurrencies, $optionValue['label']);
+        }
+
+        $form->add('select', 'financial_type_id', ts('Financial Type'),
+            ['' => ts('- select -')] + $allCurrencies, TRUE, ['class' => 'crm-select2']
+        );
+    }
 }
 
 
