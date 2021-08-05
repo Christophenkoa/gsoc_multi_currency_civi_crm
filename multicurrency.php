@@ -8,20 +8,16 @@ use CRM_Multicurrency_ExtensionUtil as E;
 
 function multicurrency_civicrm_buildForm($formName, &$form) {
 
+    //CRM_Member_Form_MembershipType CRM_Contribute_Form_Contribution_Main
     if($formName == 'CRM_Member_Form_MembershipType') {
-        $allCurrencies = [];
+
         $optionValues = \Civi\Api4\OptionValue::get()
             ->addWhere('option_group_id', '=', 49)
             ->setLimit(25)
             ->execute();
 
-        foreach ($optionValues as $optionValue) {
-            array_push($allCurrencies, $optionValue['label']);
-        }
-
-        $form->add('select', 'financial_type_id', ts('Financial Type'),
-            ['' => ts('- select -')] + $allCurrencies, TRUE, ['class' => 'crm-select2']
-        );
+        $form->assign('allCurrencies', $optionValues);
+        //$form->add('select');
     }
 }
 
