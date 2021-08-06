@@ -1,5 +1,4 @@
 <div class="membership_types">
-{*    insert a for loop here*}
     {foreach from=$memberships item=membership}
         <div>
             <div style="margin:10px;">{$membership.label}</div>
