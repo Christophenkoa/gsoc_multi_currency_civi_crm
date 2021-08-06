@@ -73,7 +73,7 @@ function multicurrency_civicrm_buildAmount($pageType, &$form, &$amount) {
                 ],
 
             ];
-        // var_dump($memberships[0]['due'][0]->currency);
+        var_dump($memberships[0]['due'][0]->currency);
 
         $form->assign('memberships', $memberships);
     }

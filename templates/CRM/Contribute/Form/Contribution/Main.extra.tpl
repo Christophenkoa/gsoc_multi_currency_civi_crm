@@ -3,6 +3,7 @@
         <div>
             <div style="margin:10px;">{$membership.label}</div>
             <ul>
+{*                How to iterate on $membership.due ? *}
                 {foreach from=$membership item=membership_due}
                     <div>
                         <input type="radio" id="{$membership_due.id}" name="drone" value="{$membership_due.id}">
